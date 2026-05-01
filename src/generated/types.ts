@@ -117,7 +117,38 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Default Response */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: false;
+                            error: {
+                                code: string;
+                                message: string;
+                                details?: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -354,7 +385,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                project: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -397,7 +443,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                project: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -440,7 +501,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                project: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -529,7 +605,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                objective: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -563,7 +654,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                objective: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -607,7 +713,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                objective: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -650,7 +771,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                project: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -694,7 +830,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                objective: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -728,7 +879,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                boundary: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -761,7 +927,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                boundary: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -797,7 +978,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                boundary: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -844,7 +1040,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                evaluation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -891,7 +1102,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                boundary: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -973,7 +1199,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                principal: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1007,7 +1248,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                principal: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1057,7 +1313,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                addressBinding: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1100,7 +1371,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                principal: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1183,7 +1469,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                agent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1217,7 +1518,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                agent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1262,7 +1578,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                agent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1296,7 +1627,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1328,7 +1674,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                runtimeBinding: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1372,7 +1733,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                runtimeBinding: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1410,7 +1786,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1441,7 +1832,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                membership: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1486,7 +1892,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                membership: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1527,7 +1948,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                contextBundle: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1561,7 +1997,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                contextBundle: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1604,7 +2055,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                receipt: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1644,7 +2110,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1678,7 +2155,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1714,7 +2202,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                stateView: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1758,7 +2261,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                stateView: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1790,7 +2308,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                knowledgeVersion: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1826,7 +2359,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                knowledgeVersion: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1863,7 +2411,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1912,7 +2475,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                candidate: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1946,7 +2524,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                candidate: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -1991,7 +2584,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                knowledgeVersion: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2038,7 +2646,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                observation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2075,7 +2698,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2111,7 +2749,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                observation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2162,7 +2815,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                action: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2196,7 +2864,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                action: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2237,7 +2920,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2282,7 +2980,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                policyDecision: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2319,7 +3032,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2348,7 +3076,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                negotiation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2382,7 +3125,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                negotiation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2430,7 +3188,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                negotiation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2474,7 +3247,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                negotiation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2517,7 +3305,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2563,7 +3362,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                negotiation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2600,7 +3414,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2634,7 +3463,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                workOrder: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2670,7 +3514,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2706,7 +3565,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                workOrder: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2751,7 +3625,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                claim: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2798,7 +3687,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                submission: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2840,7 +3744,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2881,7 +3796,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2919,7 +3845,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2951,7 +3892,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                review: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -2991,7 +3947,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                aggregation: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3029,7 +4000,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3059,7 +4045,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                rewardIntent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3093,7 +4094,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                rewardIntent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3131,7 +4147,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3173,7 +4200,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3205,7 +4243,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3252,7 +4301,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                governanceIntent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3299,7 +4363,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3333,7 +4408,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                governanceIntent: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3371,7 +4461,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3403,7 +4504,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3439,7 +4555,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                view: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3473,7 +4604,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3512,7 +4654,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3548,7 +4705,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                subject: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3584,7 +4756,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3634,7 +4821,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                receipt: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3669,7 +4871,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3707,7 +4924,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3741,7 +4973,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                backends: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3777,7 +5024,38 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Default Response */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: false;
+                            error: {
+                                code: string;
+                                message: string;
+                                details?: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3811,7 +5089,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                merged: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3868,7 +5161,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                link: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3912,7 +5220,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -3956,7 +5275,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                trace: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4095,7 +5429,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4131,7 +5476,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4165,7 +5521,11 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            [key: string]: unknown;
+                        };
+                    };
                 };
             };
         };
@@ -4184,9 +5544,16 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** List guardian requests */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    projectId?: string;
+                    actionId?: string;
+                    status?: string;
+                    limit?: string;
+                    cursor?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -4198,7 +5565,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4217,9 +5599,16 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** List reputation evidence projections */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    projectId?: string;
+                    actorId?: string;
+                    kind?: string;
+                    limit?: string;
+                    cursor?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -4231,7 +5620,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4250,9 +5654,16 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** List slash requests */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    projectId?: string;
+                    actorId?: string;
+                    status?: string;
+                    limit?: string;
+                    cursor?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -4264,7 +5675,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4283,6 +5709,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** Project overview (aggregated read model) */
         get: {
             parameters: {
                 query?: never;
@@ -4299,7 +5726,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                overview: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4318,6 +5760,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** Project timeline (merged from runs and projections) */
         get: {
             parameters: {
                 query?: never;
@@ -4334,7 +5777,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                timeline: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4383,7 +5841,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                assignment: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4427,7 +5900,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4466,7 +5950,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4510,7 +6009,22 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                lease: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4546,7 +6060,18 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4580,7 +6105,38 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Default Response */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: false;
+                            error: {
+                                code: string;
+                                message: string;
+                                details?: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4611,12 +6167,14 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Default Response */
+                /** @description Server-Sent Events stream of EventEnvelope frames */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/event-stream": string;
+                    };
                 };
             };
         };
@@ -4647,12 +6205,14 @@ export interface paths {
             };
             requestBody?: never;
             responses: {
-                /** @description Default Response */
+                /** @description Server-Sent Events stream of EventEnvelope frames */
                 200: {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "text/event-stream": string;
+                    };
                 };
             };
         };
@@ -4671,9 +6231,13 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** List agent-collaboration scenario runs */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    limit?: string;
+                    cursor?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -4685,11 +6249,27 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
         put?: never;
+        /** Run agent-collaboration dev scenario */
         post: {
             parameters: {
                 query?: never;
@@ -4704,7 +6284,42 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                run: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Default Response */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: false;
+                            error: {
+                                code: string;
+                                message: string;
+                                details?: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
@@ -4721,9 +6336,14 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** List incentive-risk scenario runs */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    projectId?: string;
+                    limit?: string;
+                    cursor?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -4735,11 +6355,27 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                [key: string]: unknown;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
         put?: never;
+        /** Run incentive-risk dev scenario */
         post: {
             parameters: {
                 query?: never;
@@ -4754,7 +6390,42 @@ export interface paths {
                     headers: {
                         [name: string]: unknown;
                     };
-                    content?: never;
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                run: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+                /** @description Default Response */
+                403: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: false;
+                            error: {
+                                code: string;
+                                message: string;
+                                details?: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
                 };
             };
         };
