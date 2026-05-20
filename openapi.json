@@ -187,6 +187,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -369,6 +370,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -629,6 +631,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -673,6 +676,12 @@
                             "type": "string"
                           },
                           "memberCount": {
+                            "type": "integer"
+                          },
+                          "feedCount": {
+                            "type": "integer"
+                          },
+                          "artifactCount": {
                             "type": "integer"
                           },
                           "createdAt": {
@@ -734,6 +743,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -856,6 +866,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -962,6 +973,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1065,6 +1077,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1165,6 +1178,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1245,6 +1259,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1336,6 +1351,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1505,6 +1521,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1577,6 +1594,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1643,6 +1661,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1723,6 +1742,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1789,6 +1809,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1869,6 +1890,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -1935,6 +1957,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2007,6 +2030,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2073,6 +2097,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2161,6 +2186,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2227,6 +2253,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2299,6 +2326,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2365,6 +2393,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2445,6 +2474,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2511,6 +2541,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -2599,6 +2630,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3178,6 +3210,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3250,6 +3283,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3341,6 +3375,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3371,6 +3406,60 @@
                             "type": "object",
                             "additionalProperties": true
                           }
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-stake-indexer-health": {
+      "get": {
+        "summary": "Get agent stake indexer health",
+        "tags": [
+          "Agents"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "health"
+                      ],
+                      "properties": {
+                        "health": {
+                          "type": "object",
+                          "additionalProperties": true
                         }
                       },
                       "additionalProperties": true
@@ -3457,6 +3546,60 @@
                       ],
                       "properties": {
                         "inbox": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/personal-center": {
+      "get": {
+        "summary": "Get the connected wallet personal center aggregate",
+        "tags": [
+          "PersonalCenter"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "personalCenter"
+                      ],
+                      "properties": {
+                        "personalCenter": {
                           "type": "object",
                           "additionalProperties": true
                         }
@@ -3596,6 +3739,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3672,6 +3816,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -5486,6 +5631,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -5562,6 +5708,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -6244,6 +6391,813 @@
         }
       }
     },
+    "/wallet/challenges": {
+      "post": {
+        "summary": "Create wallet login challenge",
+        "tags": [
+          "Wallet"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "ecosystem",
+                  "address"
+                ],
+                "properties": {
+                  "ecosystem": {
+                    "type": "string",
+                    "enum": [
+                      "evm",
+                      "polkadot"
+                    ]
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "chainId": {
+                    "type": "string"
+                  },
+                  "requestedPrincipalId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "challenge"
+                      ],
+                      "properties": {
+                        "challenge": {
+                          "type": "object",
+                          "required": [
+                            "id",
+                            "nonce",
+                            "ecosystem",
+                            "address",
+                            "message",
+                            "issuedAt",
+                            "expiresAt"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "nonce": {
+                              "type": "string"
+                            },
+                            "ecosystem": {
+                              "type": "string"
+                            },
+                            "address": {
+                              "type": "string"
+                            },
+                            "chainId": {
+                              "type": "string"
+                            },
+                            "requestedPrincipalId": {
+                              "type": "string"
+                            },
+                            "message": {
+                              "type": "string"
+                            },
+                            "issuedAt": {
+                              "type": "string"
+                            },
+                            "expiresAt": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet/sessions": {
+      "post": {
+        "summary": "Exchange signed challenge for wallet session",
+        "tags": [
+          "Wallet"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "challengeId",
+                  "ecosystem",
+                  "address",
+                  "signature"
+                ],
+                "properties": {
+                  "challengeId": {
+                    "type": "string"
+                  },
+                  "ecosystem": {
+                    "type": "string",
+                    "enum": [
+                      "evm",
+                      "polkadot"
+                    ]
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "signature": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "session"
+                      ],
+                      "properties": {
+                        "session": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "token",
+                                "ecosystem",
+                                "address",
+                                "expiresAt",
+                                "principalBindings",
+                                "agentBindings",
+                                "capabilityHints"
+                              ],
+                              "properties": {
+                                "token": {
+                                  "type": "string"
+                                },
+                                "ecosystem": {
+                                  "type": "string"
+                                },
+                                "address": {
+                                  "type": "string"
+                                },
+                                "chainId": {
+                                  "type": "string"
+                                },
+                                "requestedPrincipalId": {
+                                  "type": "string"
+                                },
+                                "principalBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "agentBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "capabilityHints": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "expiresAt": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wallet/session": {
+      "get": {
+        "summary": "Get current wallet session by token",
+        "tags": [
+          "Wallet"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "session"
+                      ],
+                      "properties": {
+                        "session": {
+                          "type": "object",
+                          "required": [
+                            "token",
+                            "ecosystem",
+                            "address",
+                            "expiresAt",
+                            "principalBindings",
+                            "agentBindings",
+                            "capabilityHints"
+                          ],
+                          "properties": {
+                            "token": {
+                              "type": "string"
+                            },
+                            "ecosystem": {
+                              "type": "string"
+                            },
+                            "address": {
+                              "type": "string"
+                            },
+                            "chainId": {
+                              "type": "string"
+                            },
+                            "requestedPrincipalId": {
+                              "type": "string"
+                            },
+                            "principalBindings": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "agentBindings": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "capabilityHints": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "expiresAt": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Revoke current wallet session by token",
+        "tags": [
+          "Wallet"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "session"
+                      ],
+                      "properties": {
+                        "session": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "token",
+                                "ecosystem",
+                                "address",
+                                "expiresAt",
+                                "principalBindings",
+                                "agentBindings",
+                                "capabilityHints"
+                              ],
+                              "properties": {
+                                "token": {
+                                  "type": "string"
+                                },
+                                "ecosystem": {
+                                  "type": "string"
+                                },
+                                "address": {
+                                  "type": "string"
+                                },
+                                "chainId": {
+                                  "type": "string"
+                                },
+                                "requestedPrincipalId": {
+                                  "type": "string"
+                                },
+                                "principalBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "agentBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "capabilityHints": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "expiresAt": {
+                                  "type": "string"
+                                },
+                                "revokedAt": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-enrollments/challenges": {
+      "post": {
+        "summary": "Create an agent session-key enrollment challenge",
+        "tags": [
+          "Agents"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "descriptor"
+                ],
+                "properties": {
+                  "descriptor": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "challenge"
+                      ],
+                      "properties": {
+                        "challenge": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-stakes/receipts": {
+      "post": {
+        "summary": "Record a wallet-submitted agent stake transaction receipt",
+        "tags": [
+          "Agents"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "identityId",
+                  "chainAgentId",
+                  "chainId",
+                  "txHash"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "bond",
+                      "request-unbond",
+                      "cancel-unbond",
+                      "release-unbond"
+                    ]
+                  },
+                  "identityId": {
+                    "type": "string"
+                  },
+                  "chainAgentId": {
+                    "type": "string"
+                  },
+                  "chainId": {
+                    "type": "string"
+                  },
+                  "txHash": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "string"
+                  },
+                  "principalId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "receipt"
+                      ],
+                      "properties": {
+                        "receipt": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-enrollments/authorizations": {
+      "post": {
+        "summary": "Authorize an agent session key with the connected root wallet",
+        "tags": [
+          "Agents"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "challengeId",
+                  "sessionSignature",
+                  "rootAuthorizationSignature"
+                ],
+                "properties": {
+                  "challengeId": {
+                    "type": "string"
+                  },
+                  "sessionSignature": {
+                    "type": "string"
+                  },
+                  "rootAuthorizationSignature": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "authorization"
+                      ],
+                      "properties": {
+                        "authorization": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-enrollments/{id}/revoke": {
+      "post": {
+        "summary": "Revoke an authorized agent session key",
+        "tags": [
+          "Agents"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "authorization"
+                      ],
+                      "properties": {
+                        "authorization": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/identity/airdrop/payload": {
       "post": {
         "summary": "Create an EVM signing payload for an airdrop claim",
@@ -6672,6 +7626,751 @@
                       ],
                       "properties": {
                         "identity": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/config": {
+      "get": {
+        "summary": "Get production Get VIB configuration for the active network",
+        "tags": [
+          "Get VIB"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "config"
+                      ],
+                      "properties": {
+                        "config": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/quote": {
+      "get": {
+        "summary": "Quote DOT to VIB for the active network",
+        "tags": [
+          "Get VIB"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "amount",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "quote"
+                      ],
+                      "properties": {
+                        "quote": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/orders": {
+      "post": {
+        "summary": "Create a Get VIB DOT deposit order",
+        "tags": [
+          "Get VIB"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "dotAmount",
+                  "accountId"
+                ],
+                "properties": {
+                  "dotAmount": {
+                    "type": "string"
+                  },
+                  "accountId": {
+                    "type": "string"
+                  },
+                  "identityId": {
+                    "type": "string"
+                  },
+                  "evmAddress": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "order"
+                      ],
+                      "properties": {
+                        "order": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/orders/{orderId}": {
+      "get": {
+        "summary": "Get a Get VIB DOT deposit order",
+        "tags": [
+          "Get VIB"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "orderId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "order"
+                      ],
+                      "properties": {
+                        "order": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/account/{accountId}/summary": {
+      "get": {
+        "summary": "Get a user's Get VIB allocation summary",
+        "tags": [
+          "Get VIB"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "accountId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "summary"
+                      ],
+                      "properties": {
+                        "summary": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/account/{accountId}/proof": {
+      "get": {
+        "summary": "Get a user's current Get VIB Merkle claim proof",
+        "tags": [
+          "Get VIB"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "accountId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "proof"
+                      ],
+                      "properties": {
+                        "proof": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/account/{accountId}/records": {
+      "get": {
+        "summary": "Get a user's Get VIB deposits, allocations, and claims",
+        "tags": [
+          "Get VIB"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "accountId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "records"
+                      ],
+                      "properties": {
+                        "records": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-vib/curve": {
+      "get": {
+        "summary": "Get Get VIB bonding curve display points",
+        "tags": [
+          "Get VIB"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "curve"
+                      ],
+                      "properties": {
+                        "curve": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/get-vib/deposits/finalize": {
+      "post": {
+        "summary": "Finalize an observed Relay Chain DOT deposit and create allocation",
+        "tags": [
+          "Admin",
+          "Get VIB"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "sourceId",
+                  "dotAmount"
+                ],
+                "properties": {
+                  "sourceId": {
+                    "type": "string"
+                  },
+                  "dotAmount": {
+                    "type": "string"
+                  },
+                  "orderId": {
+                    "type": "string"
+                  },
+                  "accountId": {
+                    "type": "string"
+                  },
+                  "identityId": {
+                    "type": "string"
+                  },
+                  "paymentId": {
+                    "type": "string"
+                  },
+                  "finalizedAt": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "result"
+                      ],
+                      "properties": {
+                        "result": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/get-vib/manifests": {
+      "post": {
+        "summary": "Build and persist the next cumulative Get VIB allocation manifest",
+        "tags": [
+          "Admin",
+          "Get VIB"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "manifest"
+                      ],
+                      "properties": {
+                        "manifest": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/get-vib/claims": {
+      "post": {
+        "summary": "Record a Get VIB on-chain claim result",
+        "tags": [
+          "Admin",
+          "Get VIB"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "accountId",
+                  "rootVersion",
+                  "cumulativeAmount",
+                  "claimedDelta"
+                ],
+                "properties": {
+                  "accountId": {
+                    "type": "string"
+                  },
+                  "identityId": {
+                    "type": "string"
+                  },
+                  "rootVersion": {
+                    "type": "integer"
+                  },
+                  "cumulativeAmount": {
+                    "type": "string"
+                  },
+                  "claimedDelta": {
+                    "type": "string"
+                  },
+                  "txHash": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "confirmed",
+                      "failed"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "claim"
+                      ],
+                      "properties": {
+                        "claim": {
                           "type": "object",
                           "additionalProperties": true
                         }
@@ -8248,6 +9947,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -8324,6 +10024,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -12724,6 +14425,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -12787,6 +14489,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
