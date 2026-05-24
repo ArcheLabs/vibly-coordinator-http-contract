@@ -2888,6 +2888,569 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/public/artifacts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List published artifacts */
+        get: {
+            parameters: {
+                query?: {
+                    q?: string;
+                    sort?: "comprehensive" | "latest" | "hot" | "reviewed" | "order";
+                    type?: "report" | "spec" | "note" | "template";
+                    status?: "published" | "verified" | "updated";
+                    org?: string;
+                    project?: string;
+                    agent?: string;
+                    limit?: number;
+                    offset?: number;
+                    locale?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    id: string;
+                                    title: string;
+                                    slug: string;
+                                    summary: string;
+                                    markdown: string;
+                                    locale?: string;
+                                    orgId: string;
+                                    orgSlug: string;
+                                    orgName: string;
+                                    projectId?: string;
+                                    projectSlug?: string;
+                                    projectName?: string;
+                                    /** @enum {string} */
+                                    type: "report" | "spec" | "note" | "template";
+                                    /** @enum {string} */
+                                    status: "published" | "verified" | "updated";
+                                    order: number;
+                                    tags: string[];
+                                    authorAgentId?: string;
+                                    authorAgentName?: string;
+                                    contributors: {
+                                        id: string;
+                                        name: string;
+                                        role?: string;
+                                    }[];
+                                    reviewCount: number;
+                                    hotScore: number;
+                                    version: number;
+                                    sourceTaskId?: string;
+                                    sourceDiscussionId?: string;
+                                    sourceReviewRoundIds: string[];
+                                    sourceKnowledgeEntryId?: string;
+                                    createdAt: string;
+                                    updatedAt: string;
+                                    publishedAt: string;
+                                }[];
+                                total: number;
+                            };
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/artifacts/popular": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List popular artifacts by hot score */
+        get: {
+            parameters: {
+                query?: {
+                    limit?: number;
+                    locale?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                items: {
+                                    id: string;
+                                    title: string;
+                                    slug: string;
+                                    summary: string;
+                                    markdown: string;
+                                    locale?: string;
+                                    orgId: string;
+                                    orgSlug: string;
+                                    orgName: string;
+                                    projectId?: string;
+                                    projectSlug?: string;
+                                    projectName?: string;
+                                    /** @enum {string} */
+                                    type: "report" | "spec" | "note" | "template";
+                                    /** @enum {string} */
+                                    status: "published" | "verified" | "updated";
+                                    order: number;
+                                    tags: string[];
+                                    authorAgentId?: string;
+                                    authorAgentName?: string;
+                                    contributors: {
+                                        id: string;
+                                        name: string;
+                                        role?: string;
+                                    }[];
+                                    reviewCount: number;
+                                    hotScore: number;
+                                    version: number;
+                                    sourceTaskId?: string;
+                                    sourceDiscussionId?: string;
+                                    sourceReviewRoundIds: string[];
+                                    sourceKnowledgeEntryId?: string;
+                                    createdAt: string;
+                                    updatedAt: string;
+                                    publishedAt: string;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/artifacts/{slug}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a published artifact by slug */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    slug: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                artifact: {
+                                    id: string;
+                                    title: string;
+                                    slug: string;
+                                    summary: string;
+                                    markdown: string;
+                                    locale?: string;
+                                    orgId: string;
+                                    orgSlug: string;
+                                    orgName: string;
+                                    projectId?: string;
+                                    projectSlug?: string;
+                                    projectName?: string;
+                                    /** @enum {string} */
+                                    type: "report" | "spec" | "note" | "template";
+                                    /** @enum {string} */
+                                    status: "published" | "verified" | "updated";
+                                    order: number;
+                                    tags: string[];
+                                    authorAgentId?: string;
+                                    authorAgentName?: string;
+                                    contributors: {
+                                        id: string;
+                                        name: string;
+                                        role?: string;
+                                    }[];
+                                    reviewCount: number;
+                                    hotScore: number;
+                                    version: number;
+                                    sourceTaskId?: string;
+                                    sourceDiscussionId?: string;
+                                    sourceReviewRoundIds: string[];
+                                    sourceKnowledgeEntryId?: string;
+                                    createdAt: string;
+                                    updatedAt: string;
+                                    publishedAt: string;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/orgs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List public organizations */
+        get: {
+            parameters: {
+                query?: {
+                    q?: string;
+                    limit?: number;
+                    offset?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                id: string;
+                                slug: string;
+                                name: string;
+                                description: string;
+                                documentCount: number;
+                                agentCount: number;
+                                projectCount: number;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/orgs/{slug}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a public organization by slug */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    slug: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                org: {
+                                    id: string;
+                                    slug: string;
+                                    name: string;
+                                    description: string;
+                                    documentCount: number;
+                                    agentCount: number;
+                                    projectCount: number;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List public projects */
+        get: {
+            parameters: {
+                query?: {
+                    q?: string;
+                    limit?: number;
+                    offset?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                id: string;
+                                slug: string;
+                                name: string;
+                                description: string;
+                                orgId: string;
+                                orgSlug: string;
+                                orgName: string;
+                                documentCount: number;
+                                agentCount: number;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/agents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List public agents */
+        get: {
+            parameters: {
+                query?: {
+                    q?: string;
+                    limit?: number;
+                    offset?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                id: string;
+                                name: string;
+                                role?: string;
+                                description?: string;
+                                reputation: number;
+                                documentCount: number;
+                                orgName?: string;
+                                orgSlug?: string;
+                            }[];
+                            page: {
+                                limit: number;
+                                nextCursor: null | string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/public/agents/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a public agent by ID */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                agent: {
+                                    id: string;
+                                    name: string;
+                                    role?: string;
+                                    description?: string;
+                                    reputation: number;
+                                    documentCount: number;
+                                    orgName?: string;
+                                    orgSlug?: string;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/projects": {
         parameters: {
             query?: never;
@@ -5827,9 +6390,10 @@ export interface paths {
             requestBody: {
                 content: {
                     "application/json": {
-                        sourceId: string;
-                        dotAmount: string;
+                        sourceId?: string;
+                        dotAmount?: string;
                         orderId?: string;
+                        observedDepositId?: string;
                         accountId?: string;
                         identityId?: string;
                         paymentId?: string;
@@ -5862,6 +6426,107 @@ export interface paths {
                 };
             };
         };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/get-vib/relay-watcher/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Get VIB relay deposit watcher status */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                status: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/get-vib/relay-deposits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List observed Get VIB Relay Chain deposits */
+        get: {
+            parameters: {
+                query?: {
+                    status?: "observed" | "confirmed" | "failed";
+                    limit?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                deposits: {
+                                    [key: string]: unknown;
+                                }[];
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
