@@ -607,6 +607,7 @@ export interface paths {
                                     eventType: string;
                                     organizationId: string;
                                     projectId?: string;
+                                    projectName?: string;
                                     actorId?: string;
                                     subject?: {
                                         [key: string]: unknown;
@@ -670,6 +671,7 @@ export interface paths {
                                     eventType: string;
                                     organizationId: string;
                                     projectId?: string;
+                                    projectName?: string;
                                     actorId?: string;
                                     subject?: {
                                         [key: string]: unknown;
@@ -733,6 +735,7 @@ export interface paths {
                                     eventType: string;
                                     organizationId: string;
                                     projectId?: string;
+                                    projectName?: string;
                                     actorId?: string;
                                     subject?: {
                                         [key: string]: unknown;
@@ -742,6 +745,146 @@ export interface paths {
                                         [key: string]: unknown;
                                     };
                                     createdAt: string;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/organizations/{organizationId}/agents/{principalId}/join-eligibility": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Check agent join eligibility for an organization */
+        get: {
+            parameters: {
+                query?: {
+                    chainId?: string;
+                    identityId?: string;
+                    chainAgentId?: string;
+                };
+                header?: never;
+                path: {
+                    organizationId: string;
+                    principalId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                eligibility: {
+                                    eligible: boolean;
+                                    checks: {
+                                        name: string;
+                                        /** @enum {string} */
+                                        status: "ok" | "warn" | "blocked";
+                                        message: string;
+                                        details?: {
+                                            [key: string]: unknown;
+                                        };
+                                    }[];
+                                    requiredAction?: {
+                                        /** @enum {string} */
+                                        type: "stake" | "register-agent" | "setup-identity";
+                                        required?: string;
+                                        current?: string;
+                                        message: string;
+                                    };
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/organizations/{organizationId}/agents/{principalId}/exit-eligibility": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Check agent exit eligibility for an organization */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    organizationId: string;
+                    principalId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                eligibility: {
+                                    eligible: boolean;
+                                    checks: {
+                                        name: string;
+                                        /** @enum {string} */
+                                        status: "ok" | "warn" | "blocked";
+                                        message: string;
+                                        details?: {
+                                            [key: string]: unknown;
+                                        };
+                                    }[];
+                                    requiredAction?: {
+                                        /** @enum {string} */
+                                        type: "stake" | "register-agent" | "setup-identity";
+                                        required?: string;
+                                        current?: string;
+                                        message: string;
+                                    };
                                 };
                             } & {
                                 [key: string]: unknown;
@@ -3451,6 +3594,122 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/authority/guardian/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Guardian authority snapshot
+         * @description Returns the cached chain Guardian member set with mode, block metadata, and staleness flag. In `disabled` mode the list is always empty.
+         */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                mode: string;
+                                chainId: string;
+                                guardians: string[];
+                                blockHash?: string;
+                                blockNumber?: string;
+                                lastSyncAt?: string;
+                                stale: boolean;
+                                error?: string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/authority/guardian/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Check Guardian status for an account
+         * @description Returns a Guardian authority decision for the given account ID. Pass `?accountId=5Grp...` or omit to check the authenticated principal.
+         */
+        get: {
+            parameters: {
+                query?: {
+                    accountId?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                decision: {
+                                    accountId: string;
+                                    isGuardian: boolean;
+                                    source: string;
+                                    chainId: string;
+                                    blockHash?: string;
+                                    blockNumber?: string;
+                                    observedAt: string;
+                                    stale: boolean;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/projects": {
         parameters: {
             query?: never;
@@ -5333,7 +5592,7 @@ export interface paths {
                                     capabilityHints: string[];
                                     createdAt?: string;
                                     expiresAt: string;
-                                };
+                                } | null;
                             } & {
                                 [key: string]: unknown;
                             };

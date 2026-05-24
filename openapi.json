@@ -915,6 +915,9 @@
                               "projectId": {
                                 "type": "string"
                               },
+                              "projectName": {
+                                "type": "string"
+                              },
                               "actorId": {
                                 "type": "string"
                               },
@@ -1022,6 +1025,9 @@
                               "projectId": {
                                 "type": "string"
                               },
+                              "projectName": {
+                                "type": "string"
+                              },
                               "actorId": {
                                 "type": "string"
                               },
@@ -1124,6 +1130,9 @@
                             "projectId": {
                               "type": "string"
                             },
+                            "projectName": {
+                              "type": "string"
+                            },
                             "actorId": {
                               "type": "string"
                             },
@@ -1140,6 +1149,304 @@
                             },
                             "createdAt": {
                               "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/agents/{principalId}/join-eligibility": {
+      "get": {
+        "summary": "Check agent join eligibility for an organization",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chainId",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "identityId",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chainAgentId",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "organizationId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "principalId",
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "eligibility"
+                      ],
+                      "properties": {
+                        "eligibility": {
+                          "type": "object",
+                          "required": [
+                            "eligible",
+                            "checks"
+                          ],
+                          "properties": {
+                            "eligible": {
+                              "type": "boolean"
+                            },
+                            "checks": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "name",
+                                  "status",
+                                  "message"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ok",
+                                      "warn",
+                                      "blocked"
+                                    ]
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "details": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                  }
+                                }
+                              }
+                            },
+                            "requiredAction": {
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "message"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "stake",
+                                    "register-agent",
+                                    "setup-identity"
+                                  ]
+                                },
+                                "required": {
+                                  "type": "string"
+                                },
+                                "current": {
+                                  "type": "string"
+                                },
+                                "message": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organizationId}/agents/{principalId}/exit-eligibility": {
+      "get": {
+        "summary": "Check agent exit eligibility for an organization",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "organizationId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "principalId",
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "eligibility"
+                      ],
+                      "properties": {
+                        "eligibility": {
+                          "type": "object",
+                          "required": [
+                            "eligible",
+                            "checks"
+                          ],
+                          "properties": {
+                            "eligible": {
+                              "type": "boolean"
+                            },
+                            "checks": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "name",
+                                  "status",
+                                  "message"
+                                ],
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ok",
+                                      "warn",
+                                      "blocked"
+                                    ]
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "details": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                  }
+                                }
+                              }
+                            },
+                            "requiredAction": {
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "message"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "stake",
+                                    "register-agent",
+                                    "setup-identity"
+                                  ]
+                                },
+                                "required": {
+                                  "type": "string"
+                                },
+                                "current": {
+                                  "type": "string"
+                                },
+                                "message": {
+                                  "type": "string"
+                                }
+                              }
                             }
                           }
                         }
@@ -5567,6 +5874,184 @@
         }
       }
     },
+    "/authority/guardian/status": {
+      "get": {
+        "summary": "Guardian authority snapshot",
+        "tags": [
+          "Authority"
+        ],
+        "description": "Returns the cached chain Guardian member set with mode, block metadata, and staleness flag. In `disabled` mode the list is always empty.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "mode",
+                        "chainId",
+                        "guardians",
+                        "stale"
+                      ],
+                      "properties": {
+                        "mode": {
+                          "type": "string"
+                        },
+                        "chainId": {
+                          "type": "string"
+                        },
+                        "guardians": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "blockHash": {
+                          "type": "string"
+                        },
+                        "blockNumber": {
+                          "type": "string"
+                        },
+                        "lastSyncAt": {
+                          "type": "string"
+                        },
+                        "stale": {
+                          "type": "boolean"
+                        },
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authority/guardian/me": {
+      "get": {
+        "summary": "Check Guardian status for an account",
+        "tags": [
+          "Authority"
+        ],
+        "description": "Returns a Guardian authority decision for the given account ID. Pass `?accountId=5Grp...` or omit to check the authenticated principal.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "accountId",
+            "required": false
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "decision"
+                      ],
+                      "properties": {
+                        "decision": {
+                          "type": "object",
+                          "required": [
+                            "accountId",
+                            "isGuardian",
+                            "source",
+                            "chainId",
+                            "observedAt",
+                            "stale"
+                          ],
+                          "properties": {
+                            "accountId": {
+                              "type": "string"
+                            },
+                            "isGuardian": {
+                              "type": "boolean"
+                            },
+                            "source": {
+                              "type": "string"
+                            },
+                            "chainId": {
+                              "type": "string"
+                            },
+                            "blockHash": {
+                              "type": "string"
+                            },
+                            "blockNumber": {
+                              "type": "string"
+                            },
+                            "observedAt": {
+                              "type": "string"
+                            },
+                            "stale": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/projects": {
       "post": {
         "summary": "Create a new project",
@@ -8634,57 +9119,64 @@
                       ],
                       "properties": {
                         "session": {
-                          "type": "object",
-                          "required": [
-                            "token",
-                            "ecosystem",
-                            "address",
-                            "expiresAt",
-                            "principalBindings",
-                            "agentBindings",
-                            "capabilityHints"
-                          ],
-                          "properties": {
-                            "token": {
-                              "type": "string"
-                            },
-                            "ecosystem": {
-                              "type": "string"
-                            },
-                            "address": {
-                              "type": "string"
-                            },
-                            "chainId": {
-                              "type": "string"
-                            },
-                            "requestedPrincipalId": {
-                              "type": "string"
-                            },
-                            "principalBindings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "token",
+                                "ecosystem",
+                                "address",
+                                "expiresAt",
+                                "principalBindings",
+                                "agentBindings",
+                                "capabilityHints"
+                              ],
+                              "properties": {
+                                "token": {
+                                  "type": "string"
+                                },
+                                "ecosystem": {
+                                  "type": "string"
+                                },
+                                "address": {
+                                  "type": "string"
+                                },
+                                "chainId": {
+                                  "type": "string"
+                                },
+                                "requestedPrincipalId": {
+                                  "type": "string"
+                                },
+                                "principalBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "agentBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "capabilityHints": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "expiresAt": {
+                                  "type": "string"
+                                }
                               }
                             },
-                            "agentBindings": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "capabilityHints": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "createdAt": {
-                              "type": "string"
-                            },
-                            "expiresAt": {
-                              "type": "string"
+                            {
+                              "type": "null"
                             }
-                          }
+                          ]
                         }
                       },
                       "additionalProperties": true
