@@ -478,6 +478,7 @@ export interface paths {
                                 id: string;
                                 name: string;
                                 description?: string;
+                                chainId?: string;
                                 status: string;
                                 memberCount: number;
                                 feedCount?: number;
@@ -538,6 +539,7 @@ export interface paths {
                                     id: string;
                                     name: string;
                                     description?: string;
+                                    chainId?: string;
                                     status: string;
                                     handbook?: {
                                         [key: string]: unknown;
@@ -605,6 +607,8 @@ export interface paths {
                                 items: {
                                     feedEventId: string;
                                     eventType: string;
+                                    networkId?: string;
+                                    chainId?: string;
                                     organizationId: string;
                                     projectId?: string;
                                     projectName?: string;
@@ -669,6 +673,8 @@ export interface paths {
                                 items: {
                                     feedEventId: string;
                                     eventType: string;
+                                    networkId?: string;
+                                    chainId?: string;
                                     organizationId: string;
                                     projectId?: string;
                                     projectName?: string;
@@ -733,6 +739,8 @@ export interface paths {
                                 feedItem: {
                                     feedEventId: string;
                                     eventType: string;
+                                    networkId?: string;
+                                    chainId?: string;
                                     organizationId: string;
                                     projectId?: string;
                                     projectName?: string;
@@ -2784,6 +2792,7 @@ export interface paths {
             parameters: {
                 query?: {
                     organizationId?: string;
+                    chainId?: string;
                     limit?: number;
                 };
                 header?: never;
@@ -6340,6 +6349,7 @@ export interface paths {
                     "application/json": {
                         dotAmount: string;
                         accountId: string;
+                        networkId?: string;
                         identityId?: string;
                         evmAddress?: string;
                     };
@@ -6650,6 +6660,7 @@ export interface paths {
                 content: {
                     "application/json": {
                         sourceId?: string;
+                        networkId?: string;
                         dotAmount?: string;
                         orderId?: string;
                         observedDepositId?: string;
@@ -6862,6 +6873,7 @@ export interface paths {
                 content: {
                     "application/json": {
                         accountId: string;
+                        networkId?: string;
                         identityId?: string;
                         rootVersion: number;
                         cumulativeAmount: string;

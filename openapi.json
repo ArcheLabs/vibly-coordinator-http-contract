@@ -672,6 +672,9 @@
                           "description": {
                             "type": "string"
                           },
+                          "chainId": {
+                            "type": "string"
+                          },
                           "status": {
                             "type": "string"
                           },
@@ -786,6 +789,9 @@
                               "type": "string"
                             },
                             "description": {
+                              "type": "string"
+                            },
+                            "chainId": {
                               "type": "string"
                             },
                             "status": {
@@ -909,6 +915,12 @@
                               "eventType": {
                                 "type": "string"
                               },
+                              "networkId": {
+                                "type": "string"
+                              },
+                              "chainId": {
+                                "type": "string"
+                              },
                               "organizationId": {
                                 "type": "string"
                               },
@@ -1019,6 +1031,12 @@
                               "eventType": {
                                 "type": "string"
                               },
+                              "networkId": {
+                                "type": "string"
+                              },
+                              "chainId": {
+                                "type": "string"
+                              },
                               "organizationId": {
                                 "type": "string"
                               },
@@ -1122,6 +1140,12 @@
                               "type": "string"
                             },
                             "eventType": {
+                              "type": "string"
+                            },
+                            "networkId": {
+                              "type": "string"
+                            },
+                            "chainId": {
                               "type": "string"
                             },
                             "organizationId": {
@@ -4166,6 +4190,14 @@
             },
             "in": "query",
             "name": "organizationId",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chainId",
             "required": false
           },
           {
@@ -10091,6 +10123,7 @@
         "tags": [
           "Get VIB"
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10154,6 +10187,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10222,6 +10256,9 @@
                     "type": "string"
                   },
                   "accountId": {
+                    "type": "string"
+                  },
+                  "networkId": {
                     "type": "string"
                   },
                   "identityId": {
@@ -10298,6 +10335,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10361,6 +10399,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10424,6 +10463,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10487,6 +10527,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10540,6 +10581,7 @@
         "tags": [
           "Get VIB"
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -10602,6 +10644,9 @@
                 "type": "object",
                 "properties": {
                   "sourceId": {
+                    "type": "string"
+                  },
+                  "networkId": {
                     "type": "string"
                   },
                   "dotAmount": {
@@ -10887,6 +10932,9 @@
                 ],
                 "properties": {
                   "accountId": {
+                    "type": "string"
+                  },
+                  "networkId": {
                     "type": "string"
                   },
                   "identityId": {
