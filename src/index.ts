@@ -8,5 +8,5 @@ export type {
   SseHandlers,
   SseOptions,
 } from "./sse.js";
-export { projectEventStreamUrl } from "./sse.js";
+export { projectEventStreamUrl, globalEventStreamUrl } from "./sse.js";
 export type { paths, components, operations } from "./generated/types.js";

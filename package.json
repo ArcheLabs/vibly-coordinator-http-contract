@@ -1,7 +1,6 @@
 {
   "name": "@vibly/coordinator-http-contract",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -37,7 +36,8 @@
     "build": "tsc -p tsconfig.json",
     "lint": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "verify:types": "node scripts/verify-types.mjs"
+    "verify:types": "node scripts/verify-types.mjs",
+    "prepack": "pnpm build"
   },
   "dependencies": {
     "openapi-fetch": "^0.13.0"
@@ -47,5 +47,9 @@
     "openapi-typescript": "^7.4.0",
     "typescript": "^5.8.3",
     "vitest": "^3.1.2"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
   }
 }

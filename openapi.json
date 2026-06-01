@@ -118,6 +118,70 @@
         }
       }
     },
+    "/version-policy": {
+      "get": {
+        "summary": "Get coordinator client version policy",
+        "tags": [
+          "Health"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "policy": {
+                          "type": "object",
+                          "properties": {
+                            "minimumClientVersion": {
+                              "type": "string"
+                            },
+                            "recommendedClientVersion": {
+                              "type": "string"
+                            },
+                            "minimumContractVersion": {
+                              "type": "string"
+                            },
+                            "upgradeDeadline": {
+                              "type": "string"
+                            },
+                            "upgradeInstructionsUrl": {
+                              "type": "string"
+                            },
+                            "protocolVersion": {
+                              "type": "string"
+                            },
+                            "enforcement": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "minimumClientVersion",
+                            "recommendedClientVersion",
+                            "minimumContractVersion",
+                            "upgradeInstructionsUrl",
+                            "protocolVersion",
+                            "enforcement"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/metrics": {
       "get": {
         "summary": "Prometheus metrics",
@@ -4473,6 +4537,104 @@
                       ],
                       "properties": {
                         "inbox": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agents/{id}/heartbeat": {
+      "post": {
+        "summary": "Record an agent daemon heartbeat",
+        "tags": [
+          "Agents"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "clientVersion": {
+                    "type": "string"
+                  },
+                  "daemonVersion": {
+                    "type": "string"
+                  },
+                  "contractVersion": {
+                    "type": "string"
+                  },
+                  "protocolVersion": {
+                    "type": "string"
+                  },
+                  "availability": {
+                    "type": "string"
+                  },
+                  "upgradePhase": {
+                    "type": "string"
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "heartbeat"
+                      ],
+                      "properties": {
+                        "heartbeat": {
                           "type": "object",
                           "additionalProperties": true
                         }
@@ -10773,6 +10935,77 @@
                       "properties": {
                         "records": {
                           "type": "object",
+                          "required": [
+                            "relayDeposits",
+                            "deposits",
+                            "allocations",
+                            "claims"
+                          ],
+                          "properties": {
+                            "relayDeposits": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true,
+                                "properties": {
+                                  "sourceId": {
+                                    "type": "string"
+                                  },
+                                  "from": {
+                                    "type": "string"
+                                  },
+                                  "to": {
+                                    "type": "string"
+                                  },
+                                  "dotAmount": {
+                                    "type": "string"
+                                  },
+                                  "paymentAmount": {
+                                    "type": "string"
+                                  },
+                                  "extrinsicHash": {
+                                    "type": "string"
+                                  },
+                                  "blockNumber": {
+                                    "type": "number"
+                                  },
+                                  "finalizedAt": {
+                                    "type": "string"
+                                  },
+                                  "status": {
+                                    "type": "string"
+                                  },
+                                  "failureReason": {
+                                    "type": "string"
+                                  },
+                                  "accountId": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "deposits": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "allocations": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            },
+                            "claims": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": true
+                              }
+                            }
+                          },
                           "additionalProperties": true
                         }
                       },

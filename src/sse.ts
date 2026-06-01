@@ -1,7 +1,7 @@
 /**
  * Typed Server-Sent Events helpers for the Coordinator project event stream.
  *
- * Coordinator publishes domain events on `/projects/:projectId/events` using
+ * Coordinator publishes project domain events on `/projects/:projectId/stream` and global streams on `/streams/events`.
  * the Fastify SSE plugin. The event payload is the full Concord event
  * envelope; consumers care about the `type` discriminator plus the
  * `payload` shape per event type.
@@ -56,7 +56,16 @@ export interface SseOptions {
  * or fetch-based parser for Node CLIs).
  */
 export function projectEventStreamUrl(opts: SseOptions, projectId: string): string {
-  const url = new URL(`/projects/${projectId}/events`, opts.baseUrl);
+  const url = new URL(`/projects/${projectId}/stream`, opts.baseUrl);
+  for (const [key, value] of Object.entries(opts.query ?? {})) {
+    if (value !== undefined && value !== "") url.searchParams.set(key, value);
+  }
+  return url.toString();
+}
+
+
+export function globalEventStreamUrl(opts: SseOptions): string {
+  const url = new URL("/streams/events", opts.baseUrl);
   for (const [key, value] of Object.entries(opts.query ?? {})) {
     if (value !== undefined && value !== "") url.searchParams.set(key, value);
   }

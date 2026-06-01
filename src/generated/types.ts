@@ -104,6 +104,55 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/version-policy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get coordinator client version policy */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            ok?: boolean;
+                            data?: {
+                                policy?: {
+                                    minimumClientVersion: string;
+                                    recommendedClientVersion: string;
+                                    minimumContractVersion: string;
+                                    upgradeDeadline?: string;
+                                    upgradeInstructionsUrl: string;
+                                    protocolVersion: string;
+                                    enforcement: boolean;
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/metrics": {
         parameters: {
             query?: never;
@@ -2985,6 +3034,71 @@ export interface paths {
         };
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/agents/{id}/heartbeat": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Record an agent daemon heartbeat */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": {
+                        clientVersion?: string;
+                        daemonVersion?: string;
+                        contractVersion?: string;
+                        protocolVersion?: string;
+                        availability?: string;
+                        upgradePhase?: string;
+                        metadata?: {
+                            [key: string]: unknown;
+                        };
+                    };
+                };
+            };
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                heartbeat: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -6736,6 +6850,31 @@ export interface paths {
                             ok: true;
                             data: {
                                 records: {
+                                    relayDeposits: ({
+                                        sourceId?: string;
+                                        from?: string;
+                                        to?: string;
+                                        dotAmount?: string;
+                                        paymentAmount?: string;
+                                        extrinsicHash?: string;
+                                        blockNumber?: number;
+                                        finalizedAt?: string;
+                                        status?: string;
+                                        failureReason?: string;
+                                        accountId?: string;
+                                    } & {
+                                        [key: string]: unknown;
+                                    })[];
+                                    deposits: {
+                                        [key: string]: unknown;
+                                    }[];
+                                    allocations: {
+                                        [key: string]: unknown;
+                                    }[];
+                                    claims: {
+                                        [key: string]: unknown;
+                                    }[];
+                                } & {
                                     [key: string]: unknown;
                                 };
                             } & {
