@@ -1,5 +1,5 @@
 {
-  "name": "@vibly/coordinator-http-contract",
+  "name": "@vibly-ai/coordinator-http-contract",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",

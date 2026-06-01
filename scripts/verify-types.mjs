@@ -27,7 +27,7 @@ try {
   const actual = readFileSync(candidate, "utf8");
   if (expected !== actual) {
     console.error(
-      `[verify:contract-types] Drift detected. Run \`pnpm --filter @vibly/coordinator-http-contract gen\` and commit the result.`,
+      `[verify:contract-types] Drift detected. Run \`pnpm --filter @vibly-ai/coordinator-http-contract gen\` and commit the result.`,
     );
     process.exit(1);
   }
