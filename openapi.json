@@ -118,6 +118,419 @@
         }
       }
     },
+    "/networks": {
+      "get": {
+        "summary": "List public Vibly network manifests",
+        "tags": [
+          "Health"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "networks": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "manifestVersion": {
+                                "type": "number"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              },
+                              "ttlSeconds": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "stage": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "coordinatorUrls": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "chains": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "payment": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "chainId": {
+                                        "type": "string"
+                                      },
+                                      "genesisHash": {
+                                        "type": "string"
+                                      },
+                                      "rpcUrls": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "tokenSymbol": {
+                                        "type": "string"
+                                      },
+                                      "tokenDecimals": {
+                                        "type": "number"
+                                      },
+                                      "explorerTxUrl": {
+                                        "type": "string"
+                                      },
+                                      "status": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "chainId",
+                                      "rpcUrls"
+                                    ]
+                                  },
+                                  "vibly": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "chainId": {
+                                        "type": "string"
+                                      },
+                                      "genesisHash": {
+                                        "type": "string"
+                                      },
+                                      "rpcUrls": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "tokenSymbol": {
+                                        "type": "string"
+                                      },
+                                      "tokenDecimals": {
+                                        "type": "number"
+                                      },
+                                      "explorerTxUrl": {
+                                        "type": "string"
+                                      },
+                                      "status": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "chainId",
+                                      "rpcUrls"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "payment",
+                                  "vibly"
+                                ]
+                              },
+                              "features": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "agentJoin": {
+                                    "type": "boolean"
+                                  },
+                                  "daemon": {
+                                    "type": "boolean"
+                                  },
+                                  "staking": {
+                                    "type": "boolean"
+                                  },
+                                  "rootIdentityRegistration": {
+                                    "type": "boolean"
+                                  },
+                                  "getVibConversion": {
+                                    "type": "boolean"
+                                  },
+                                  "getVibClaim": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "required": [
+                                  "agentJoin",
+                                  "daemon",
+                                  "staking",
+                                  "rootIdentityRegistration",
+                                  "getVibConversion",
+                                  "getVibClaim"
+                                ]
+                              },
+                              "messages": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              },
+                              "minimumClientVersion": {
+                                "type": "string"
+                              },
+                              "recommendedClientVersion": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "manifestVersion",
+                              "updatedAt",
+                              "ttlSeconds",
+                              "id",
+                              "label",
+                              "stage",
+                              "status",
+                              "coordinatorUrls",
+                              "chains",
+                              "features"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "networks"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/networks/{networkId}": {
+      "get": {
+        "summary": "Get one public Vibly network manifest",
+        "tags": [
+          "Health"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "name": "networkId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "network": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "manifestVersion": {
+                              "type": "number"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "ttlSeconds": {
+                              "type": "number"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "label": {
+                              "type": "string"
+                            },
+                            "stage": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "coordinatorUrls": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "chains": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "payment": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "chainId": {
+                                      "type": "string"
+                                    },
+                                    "genesisHash": {
+                                      "type": "string"
+                                    },
+                                    "rpcUrls": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "tokenSymbol": {
+                                      "type": "string"
+                                    },
+                                    "tokenDecimals": {
+                                      "type": "number"
+                                    },
+                                    "explorerTxUrl": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "chainId",
+                                    "rpcUrls"
+                                  ]
+                                },
+                                "vibly": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "chainId": {
+                                      "type": "string"
+                                    },
+                                    "genesisHash": {
+                                      "type": "string"
+                                    },
+                                    "rpcUrls": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "tokenSymbol": {
+                                      "type": "string"
+                                    },
+                                    "tokenDecimals": {
+                                      "type": "number"
+                                    },
+                                    "explorerTxUrl": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "chainId",
+                                    "rpcUrls"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "payment",
+                                "vibly"
+                              ]
+                            },
+                            "features": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "agentJoin": {
+                                  "type": "boolean"
+                                },
+                                "daemon": {
+                                  "type": "boolean"
+                                },
+                                "staking": {
+                                  "type": "boolean"
+                                },
+                                "rootIdentityRegistration": {
+                                  "type": "boolean"
+                                },
+                                "getVibConversion": {
+                                  "type": "boolean"
+                                },
+                                "getVibClaim": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "agentJoin",
+                                "daemon",
+                                "staking",
+                                "rootIdentityRegistration",
+                                "getVibConversion",
+                                "getVibClaim"
+                              ]
+                            },
+                            "messages": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            },
+                            "minimumClientVersion": {
+                              "type": "string"
+                            },
+                            "recommendedClientVersion": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "manifestVersion",
+                            "updatedAt",
+                            "ttlSeconds",
+                            "id",
+                            "label",
+                            "stage",
+                            "status",
+                            "coordinatorUrls",
+                            "chains",
+                            "features"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "network"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/version-policy": {
       "get": {
         "summary": "Get coordinator client version policy",
@@ -3432,6 +3845,7 @@
             "required": true
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3504,6 +3918,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -3587,6 +4002,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",
@@ -11228,6 +11644,60 @@
         }
       }
     },
+    "/admin/get-vib/root-uploader/status": {
+      "get": {
+        "summary": "Get Get VIB root uploader status",
+        "tags": [
+          "Admin",
+          "Get VIB"
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "status"
+                      ],
+                      "properties": {
+                        "status": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/get-vib/relay-deposits": {
       "get": {
         "summary": "List observed Get VIB Relay Chain deposits",
@@ -17427,6 +17897,7 @@
             "required": false
           }
         ],
+        "security": [],
         "responses": {
           "200": {
             "description": "Default Response",

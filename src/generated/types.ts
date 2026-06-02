@@ -104,6 +104,174 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/networks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List public Vibly network manifests */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            ok?: boolean;
+                            data?: {
+                                networks: {
+                                    manifestVersion: number;
+                                    updatedAt: string;
+                                    ttlSeconds: number;
+                                    id: string;
+                                    label: string;
+                                    stage: string;
+                                    status: string;
+                                    coordinatorUrls: string[];
+                                    chains: {
+                                        payment: {
+                                            chainId: string;
+                                            genesisHash?: string;
+                                            rpcUrls: string[];
+                                            tokenSymbol?: string;
+                                            tokenDecimals?: number;
+                                            explorerTxUrl?: string;
+                                            status?: string;
+                                        };
+                                        vibly: {
+                                            chainId: string;
+                                            genesisHash?: string;
+                                            rpcUrls: string[];
+                                            tokenSymbol?: string;
+                                            tokenDecimals?: number;
+                                            explorerTxUrl?: string;
+                                            status?: string;
+                                        };
+                                    };
+                                    features: {
+                                        agentJoin: boolean;
+                                        daemon: boolean;
+                                        staking: boolean;
+                                        rootIdentityRegistration: boolean;
+                                        getVibConversion: boolean;
+                                        getVibClaim: boolean;
+                                    };
+                                    messages?: {
+                                        [key: string]: string;
+                                    };
+                                    minimumClientVersion?: string;
+                                    recommendedClientVersion?: string;
+                                }[];
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/networks/{networkId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get one public Vibly network manifest */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    networkId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            ok?: boolean;
+                            data?: {
+                                network: {
+                                    manifestVersion: number;
+                                    updatedAt: string;
+                                    ttlSeconds: number;
+                                    id: string;
+                                    label: string;
+                                    stage: string;
+                                    status: string;
+                                    coordinatorUrls: string[];
+                                    chains: {
+                                        payment: {
+                                            chainId: string;
+                                            genesisHash?: string;
+                                            rpcUrls: string[];
+                                            tokenSymbol?: string;
+                                            tokenDecimals?: number;
+                                            explorerTxUrl?: string;
+                                            status?: string;
+                                        };
+                                        vibly: {
+                                            chainId: string;
+                                            genesisHash?: string;
+                                            rpcUrls: string[];
+                                            tokenSymbol?: string;
+                                            tokenDecimals?: number;
+                                            explorerTxUrl?: string;
+                                            status?: string;
+                                        };
+                                    };
+                                    features: {
+                                        agentJoin: boolean;
+                                        daemon: boolean;
+                                        staking: boolean;
+                                        rootIdentityRegistration: boolean;
+                                        getVibConversion: boolean;
+                                        getVibClaim: boolean;
+                                    };
+                                    messages?: {
+                                        [key: string]: string;
+                                    };
+                                    minimumClientVersion?: string;
+                                    recommendedClientVersion?: string;
+                                };
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/version-policy": {
         parameters: {
             query?: never;
@@ -7016,6 +7184,55 @@ export interface paths {
             cookie?: never;
         };
         /** Get Get VIB relay deposit watcher status */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                status: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/admin/get-vib/root-uploader/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Get VIB root uploader status */
         get: {
             parameters: {
                 query?: never;
