@@ -6798,13 +6798,9 @@
                 "type": "object",
                 "additionalProperties": false,
                 "required": [
-                  "observerId",
                   "difficulty"
                 ],
                 "properties": {
-                  "observerId": {
-                    "type": "string"
-                  },
                   "difficulty": {
                     "type": "string",
                     "enum": [
@@ -6893,14 +6889,10 @@
                 "type": "object",
                 "additionalProperties": false,
                 "required": [
-                  "approvedTaskRewardSuggestionId",
-                  "approvedBy"
+                  "approvedTaskRewardSuggestionId"
                 ],
                 "properties": {
                   "approvedTaskRewardSuggestionId": {
-                    "type": "string"
-                  },
-                  "approvedBy": {
                     "type": "string"
                   }
                 }
@@ -16300,7 +16292,7 @@
     },
     "/rewards": {
       "get": {
-        "summary": "List reward intents",
+        "summary": "Legacy mock flow: list reward intents",
         "tags": [
           "Incentives"
         ],
@@ -16406,7 +16398,7 @@
         }
       },
       "post": {
-        "summary": "Create a reward intent",
+        "summary": "Legacy mock flow: create a reward intent",
         "tags": [
           "Incentives"
         ],
@@ -16491,7 +16483,7 @@
     },
     "/rewards/{rewardIntentId}": {
       "get": {
-        "summary": "Get a reward intent",
+        "summary": "Legacy mock flow: get a reward intent",
         "tags": [
           "Incentives"
         ],
@@ -16554,7 +16546,7 @@
     },
     "/rewards/{rewardIntentId}/reserve": {
       "post": {
-        "summary": "Mock reserve reward",
+        "summary": "Legacy mock flow: reserve reward",
         "tags": [
           "Incentives"
         ],
@@ -16608,7 +16600,7 @@
     },
     "/rewards/{rewardIntentId}/claim": {
       "post": {
-        "summary": "Mock claim reward",
+        "summary": "Legacy mock flow: claim reward",
         "tags": [
           "Incentives"
         ],
@@ -16680,7 +16672,7 @@
     },
     "/ledger": {
       "get": {
-        "summary": "View mock ledger summary",
+        "summary": "Legacy mock flow: view ledger summary",
         "tags": [
           "Incentives"
         ],

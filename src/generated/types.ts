@@ -4115,7 +4115,6 @@ export interface paths {
             requestBody: {
                 content: {
                     "application/json": {
-                        observerId: string;
                         /** @enum {string} */
                         difficulty: "easy" | "normal" | "hard" | "critical";
                         rationale?: string;
@@ -4176,7 +4175,6 @@ export interface paths {
                 content: {
                     "application/json": {
                         approvedTaskRewardSuggestionId: string;
-                        approvedBy: string;
                     };
                 };
             };
@@ -10431,7 +10429,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** List reward intents */
+        /** Legacy mock flow: list reward intents */
         get: {
             parameters: {
                 query?: {
@@ -10472,7 +10470,7 @@ export interface paths {
             };
         };
         put?: never;
-        /** Create a reward intent */
+        /** Legacy mock flow: create a reward intent */
         post: {
             parameters: {
                 query?: never;
@@ -10529,7 +10527,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Get a reward intent */
+        /** Legacy mock flow: get a reward intent */
         get: {
             parameters: {
                 query?: never;
@@ -10582,7 +10580,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Mock reserve reward */
+        /** Legacy mock flow: reserve reward */
         post: {
             parameters: {
                 query?: never;
@@ -10629,7 +10627,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Mock claim reward */
+        /** Legacy mock flow: claim reward */
         post: {
             parameters: {
                 query?: never;
@@ -10680,7 +10678,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** View mock ledger summary */
+        /** Legacy mock flow: view ledger summary */
         get: {
             parameters: {
                 query?: never;
