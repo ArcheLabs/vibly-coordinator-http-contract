@@ -616,7 +616,7 @@ export interface paths {
                 content: {
                     "application/json": {
                         type: string;
-                        principalId: string;
+                        principalId?: string;
                         organizationId?: string;
                         projectId?: string;
                         payload?: {
