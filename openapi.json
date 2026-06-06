@@ -13097,7 +13097,6 @@
                   "initialRate",
                   "slope",
                   "minDot",
-                  "maxDot",
                   "dotReceivingAddress"
                 ],
                 "properties": {
@@ -13111,9 +13110,6 @@
                     "type": "string"
                   },
                   "minDot": {
-                    "type": "string"
-                  },
-                  "maxDot": {
                     "type": "string"
                   },
                   "dotReceivingAddress": {

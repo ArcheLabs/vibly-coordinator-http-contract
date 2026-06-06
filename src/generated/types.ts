@@ -8283,7 +8283,6 @@ export interface paths {
                         initialRate: string;
                         slope: string;
                         minDot: string;
-                        maxDot: string;
                         dotReceivingAddress: string;
                     };
                 };
