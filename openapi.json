@@ -11643,7 +11643,7 @@
     },
     "/get-vib/curve/quote": {
       "post": {
-        "summary": "Quote a Get VIB curve purchase",
+        "summary": "Quote a DOT-denominated Get VIB curve purchase",
         "tags": [
           "Get VIB"
         ],
@@ -11669,7 +11669,7 @@
                       "DOT"
                     ]
                   },
-                  "budgetUsd": {
+                  "budgetDot": {
                     "type": "number"
                   },
                   "dotAmount": {

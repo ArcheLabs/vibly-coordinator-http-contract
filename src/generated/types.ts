@@ -7216,7 +7216,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Quote a Get VIB curve purchase */
+        /** Quote a DOT-denominated Get VIB curve purchase */
         post: {
             parameters: {
                 query?: never;
@@ -7232,7 +7232,7 @@ export interface paths {
                         accountId?: string;
                         /** @enum {string} */
                         paymentAsset?: "DOT";
-                        budgetUsd?: number;
+                        budgetDot?: number;
                         dotAmount?: string;
                         vibAmount?: string;
                     };
