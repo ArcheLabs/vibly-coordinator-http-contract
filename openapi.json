@@ -7081,6 +7081,10 @@
                   },
                   "metadata": {
                     "type": "object"
+                  },
+                  "observationCycleInterval": {
+                    "type": "integer",
+                    "minimum": 1
                   }
                 }
               }

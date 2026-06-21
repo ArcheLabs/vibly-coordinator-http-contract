@@ -4365,6 +4365,7 @@ export interface paths {
                         description?: string;
                         sponsorPrincipalId: string;
                         metadata?: Record<string, never>;
+                        observationCycleInterval?: number;
                     };
                 };
             };
