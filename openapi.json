@@ -174,40 +174,6 @@
                                 "type": "object",
                                 "additionalProperties": false,
                                 "properties": {
-                                  "payment": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "chainId": {
-                                        "type": "string"
-                                      },
-                                      "genesisHash": {
-                                        "type": "string"
-                                      },
-                                      "rpcUrls": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "tokenSymbol": {
-                                        "type": "string"
-                                      },
-                                      "tokenDecimals": {
-                                        "type": "number"
-                                      },
-                                      "explorerTxUrl": {
-                                        "type": "string"
-                                      },
-                                      "status": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": [
-                                      "chainId",
-                                      "rpcUrls"
-                                    ]
-                                  },
                                   "vibly": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -244,7 +210,6 @@
                                   }
                                 },
                                 "required": [
-                                  "payment",
                                   "vibly"
                                 ]
                               },
@@ -263,21 +228,13 @@
                                   },
                                   "rootIdentityRegistration": {
                                     "type": "boolean"
-                                  },
-                                  "getVibConversion": {
-                                    "type": "boolean"
-                                  },
-                                  "getVibClaim": {
-                                    "type": "boolean"
                                   }
                                 },
                                 "required": [
                                   "agentJoin",
                                   "daemon",
                                   "staking",
-                                  "rootIdentityRegistration",
-                                  "getVibConversion",
-                                  "getVibClaim"
+                                  "rootIdentityRegistration"
                                 ]
                               },
                               "messages": {
@@ -385,40 +342,6 @@
                               "type": "object",
                               "additionalProperties": false,
                               "properties": {
-                                "payment": {
-                                  "type": "object",
-                                  "additionalProperties": false,
-                                  "properties": {
-                                    "chainId": {
-                                      "type": "string"
-                                    },
-                                    "genesisHash": {
-                                      "type": "string"
-                                    },
-                                    "rpcUrls": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "tokenSymbol": {
-                                      "type": "string"
-                                    },
-                                    "tokenDecimals": {
-                                      "type": "number"
-                                    },
-                                    "explorerTxUrl": {
-                                      "type": "string"
-                                    },
-                                    "status": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "chainId",
-                                    "rpcUrls"
-                                  ]
-                                },
                                 "vibly": {
                                   "type": "object",
                                   "additionalProperties": false,
@@ -455,7 +378,6 @@
                                 }
                               },
                               "required": [
-                                "payment",
                                 "vibly"
                               ]
                             },
@@ -474,21 +396,13 @@
                                 },
                                 "rootIdentityRegistration": {
                                   "type": "boolean"
-                                },
-                                "getVibConversion": {
-                                  "type": "boolean"
-                                },
-                                "getVibClaim": {
-                                  "type": "boolean"
                                 }
                               },
                               "required": [
                                 "agentJoin",
                                 "daemon",
                                 "staking",
-                                "rootIdentityRegistration",
-                                "getVibConversion",
-                                "getVibClaim"
+                                "rootIdentityRegistration"
                               ]
                             },
                             "messages": {
@@ -9902,6 +9816,216 @@
         }
       }
     },
+    "/auth/nonce": {
+      "get": {
+        "summary": "Create wallet login nonce",
+        "tags": [
+          "Wallet"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "evm",
+                "substrate"
+              ]
+            },
+            "in": "query",
+            "name": "kind",
+            "required": true
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "nonce",
+                        "message",
+                        "expiresAt"
+                      ],
+                      "properties": {
+                        "nonce": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "expiresAt": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Exchange signed login message for wallet session and Vibly identity",
+        "tags": [
+          "Wallet"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "address",
+                  "kind",
+                  "message",
+                  "signature"
+                ],
+                "properties": {
+                  "address": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "evm",
+                      "substrate"
+                    ]
+                  },
+                  "walletName": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "signature": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "sessionToken",
+                        "identity"
+                      ],
+                      "properties": {
+                        "sessionToken": {
+                          "type": "string"
+                        },
+                        "identity": {
+                          "type": "object",
+                          "required": [
+                            "viblyAccountId",
+                            "primaryAddress",
+                            "primaryKind"
+                          ],
+                          "properties": {
+                            "viblyAccountId": {
+                              "type": "string"
+                            },
+                            "evmAddress": {
+                              "type": "string"
+                            },
+                            "substrateAddress": {
+                              "type": "string"
+                            },
+                            "primaryAddress": {
+                              "type": "string"
+                            },
+                            "primaryKind": {
+                              "type": "string",
+                              "enum": [
+                                "evm",
+                                "substrate"
+                              ]
+                            },
+                            "role": {
+                              "type": "string",
+                              "enum": [
+                                "user",
+                                "agent",
+                                "observer",
+                                "reviewer"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/wallet/challenges": {
       "post": {
         "summary": "Create wallet login challenge",
@@ -10362,6 +10486,161 @@
                                 },
                                 "revokedAt": {
                                   "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "summary": "Get the current wallet-backed Vibly identity",
+        "tags": [
+          "Wallet"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "session",
+                        "identity"
+                      ],
+                      "properties": {
+                        "session": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "token",
+                                "ecosystem",
+                                "address",
+                                "expiresAt",
+                                "principalBindings",
+                                "agentBindings",
+                                "capabilityHints"
+                              ],
+                              "properties": {
+                                "token": {
+                                  "type": "string"
+                                },
+                                "ecosystem": {
+                                  "type": "string"
+                                },
+                                "address": {
+                                  "type": "string"
+                                },
+                                "chainId": {
+                                  "type": "string"
+                                },
+                                "requestedPrincipalId": {
+                                  "type": "string"
+                                },
+                                "principalBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "agentBindings": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "capabilityHints": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "expiresAt": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "identity": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "viblyAccountId",
+                                "primaryAddress",
+                                "primaryKind"
+                              ],
+                              "properties": {
+                                "viblyAccountId": {
+                                  "type": "string"
+                                },
+                                "evmAddress": {
+                                  "type": "string"
+                                },
+                                "substrateAddress": {
+                                  "type": "string"
+                                },
+                                "primaryAddress": {
+                                  "type": "string"
+                                },
+                                "primaryKind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "evm",
+                                    "substrate"
+                                  ]
+                                },
+                                "role": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user",
+                                    "agent",
+                                    "observer",
+                                    "reviewer"
+                                  ]
                                 }
                               }
                             },
@@ -11018,6 +11297,158 @@
         }
       }
     },
+    "/identity/link-evm": {
+      "post": {
+        "summary": "Link an EVM address to the current Vibly identity",
+        "tags": [
+          "Identity"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "evmAddress",
+                  "viblyAccountId"
+                ],
+                "properties": {
+                  "evmAddress": {
+                    "type": "string"
+                  },
+                  "viblyAccountId": {
+                    "type": "string"
+                  },
+                  "substrateAddress": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "link"
+                      ],
+                      "properties": {
+                        "link": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/identity/unlink-evm": {
+      "post": {
+        "summary": "Unlink an EVM address from the current Vibly identity",
+        "tags": [
+          "Identity"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "evmAddress"
+                ],
+                "properties": {
+                  "evmAddress": {
+                    "type": "string"
+                  },
+                  "viblyAccountId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "ok",
+                    "data"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "unlink"
+                      ],
+                      "properties": {
+                        "unlink": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "requestId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/identity/airdrop/payload": {
       "post": {
         "summary": "Create an EVM signing payload for an airdrop claim",
@@ -11468,1528 +11899,6 @@
         }
       }
     },
-    "/get-vib/config": {
-      "get": {
-        "summary": "Get production Get VIB configuration for the active network",
-        "tags": [
-          "Get VIB"
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "config"
-                      ],
-                      "properties": {
-                        "config": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/quote": {
-      "get": {
-        "summary": "Quote DOT to VIB for the active network",
-        "tags": [
-          "Get VIB"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "amount",
-            "required": true
-          }
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "quote"
-                      ],
-                      "properties": {
-                        "quote": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/curve/state": {
-      "get": {
-        "summary": "Get Get VIB bonding curve state",
-        "tags": [
-          "Get VIB"
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "state"
-                      ],
-                      "properties": {
-                        "state": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/curve/quote": {
-      "post": {
-        "summary": "Quote a DOT-denominated Get VIB curve purchase",
-        "tags": [
-          "Get VIB"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "networkId": {
-                    "type": "string"
-                  },
-                  "account": {
-                    "type": "string"
-                  },
-                  "accountId": {
-                    "type": "string"
-                  },
-                  "paymentAsset": {
-                    "type": "string",
-                    "enum": [
-                      "DOT"
-                    ]
-                  },
-                  "budgetDot": {
-                    "type": "number"
-                  },
-                  "dotAmount": {
-                    "type": "string"
-                  },
-                  "vibAmount": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "quote"
-                      ],
-                      "properties": {
-                        "quote": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/orders": {
-      "post": {
-        "summary": "Create a Get VIB DOT deposit order",
-        "tags": [
-          "Get VIB"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "dotAmount",
-                  "accountId"
-                ],
-                "properties": {
-                  "dotAmount": {
-                    "type": "string"
-                  },
-                  "accountId": {
-                    "type": "string"
-                  },
-                  "networkId": {
-                    "type": "string"
-                  },
-                  "identityId": {
-                    "type": "string"
-                  },
-                  "evmAddress": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "order"
-                      ],
-                      "properties": {
-                        "order": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/orders/{orderId}": {
-      "get": {
-        "summary": "Get a Get VIB DOT deposit order",
-        "tags": [
-          "Get VIB"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "orderId",
-            "required": true
-          }
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "order"
-                      ],
-                      "properties": {
-                        "order": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/curve/submit-payment": {
-      "post": {
-        "summary": "Bind a payment transaction hash to a Get VIB quote",
-        "tags": [
-          "Get VIB"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "quoteId",
-                  "paymentTxHash"
-                ],
-                "properties": {
-                  "quoteId": {
-                    "type": "string"
-                  },
-                  "paymentTxHash": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "order"
-                      ],
-                      "properties": {
-                        "order": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/account/{accountId}/summary": {
-      "get": {
-        "summary": "Get a user's Get VIB allocation summary",
-        "tags": [
-          "Get VIB"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "accountId",
-            "required": true
-          }
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "summary"
-                      ],
-                      "properties": {
-                        "summary": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/account/{accountId}/proof": {
-      "get": {
-        "summary": "Get a user's current Get VIB Merkle claim proof",
-        "tags": [
-          "Get VIB"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "accountId",
-            "required": true
-          }
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "proof"
-                      ],
-                      "properties": {
-                        "proof": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/account/{accountId}/records": {
-      "get": {
-        "summary": "Get a user's Get VIB deposits, allocations, and claims",
-        "tags": [
-          "Get VIB"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "accountId",
-            "required": true
-          }
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "records"
-                      ],
-                      "properties": {
-                        "records": {
-                          "type": "object",
-                          "required": [
-                            "relayDeposits",
-                            "deposits",
-                            "allocations",
-                            "claims"
-                          ],
-                          "properties": {
-                            "relayDeposits": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "additionalProperties": true,
-                                "properties": {
-                                  "sourceId": {
-                                    "type": "string"
-                                  },
-                                  "from": {
-                                    "type": "string"
-                                  },
-                                  "to": {
-                                    "type": "string"
-                                  },
-                                  "dotAmount": {
-                                    "type": "string"
-                                  },
-                                  "paymentAmount": {
-                                    "type": "string"
-                                  },
-                                  "extrinsicHash": {
-                                    "type": "string"
-                                  },
-                                  "blockNumber": {
-                                    "type": "number"
-                                  },
-                                  "finalizedAt": {
-                                    "type": "string"
-                                  },
-                                  "status": {
-                                    "type": "string"
-                                  },
-                                  "failureReason": {
-                                    "type": "string"
-                                  },
-                                  "accountId": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            },
-                            "deposits": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                              }
-                            },
-                            "allocations": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                              }
-                            },
-                            "claims": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                              }
-                            }
-                          },
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/claim-for": {
-      "post": {
-        "summary": "Sponsor a Get VIB claim with the configured claim-root publisher relayer",
-        "tags": [
-          "Get VIB"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "networkId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "result"
-                      ],
-                      "properties": {
-                        "result": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/get-vib/curve": {
-      "get": {
-        "summary": "Get Get VIB bonding curve display points",
-        "tags": [
-          "Get VIB"
-        ],
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "curve"
-                      ],
-                      "properties": {
-                        "curve": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/get-vib/deposits/finalize": {
-      "post": {
-        "summary": "Finalize an observed Relay Chain DOT deposit and create allocation",
-        "tags": [
-          "Admin",
-          "Get VIB"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "sourceId": {
-                    "type": "string"
-                  },
-                  "networkId": {
-                    "type": "string"
-                  },
-                  "dotAmount": {
-                    "type": "string"
-                  },
-                  "orderId": {
-                    "type": "string"
-                  },
-                  "observedDepositId": {
-                    "type": "string"
-                  },
-                  "accountId": {
-                    "type": "string"
-                  },
-                  "identityId": {
-                    "type": "string"
-                  },
-                  "paymentId": {
-                    "type": "string"
-                  },
-                  "finalizedAt": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "result"
-                      ],
-                      "properties": {
-                        "result": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/get-vib/relay-watcher/status": {
-      "get": {
-        "summary": "Get Get VIB relay deposit watcher status",
-        "tags": [
-          "Admin",
-          "Get VIB"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "status"
-                      ],
-                      "properties": {
-                        "status": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/get-vib/root-uploader/status": {
-      "get": {
-        "summary": "Get Get VIB root uploader status",
-        "tags": [
-          "Admin",
-          "Get VIB"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "status"
-                      ],
-                      "properties": {
-                        "status": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/get-vib/relay-deposits": {
-      "get": {
-        "summary": "List observed Get VIB Relay Chain deposits",
-        "tags": [
-          "Admin",
-          "Get VIB"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "observed",
-                "confirmed",
-                "failed"
-              ]
-            },
-            "in": "query",
-            "name": "status",
-            "required": false
-          },
-          {
-            "schema": {
-              "type": "integer",
-              "default": 50
-            },
-            "in": "query",
-            "name": "limit",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "deposits"
-                      ],
-                      "properties": {
-                        "deposits": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "additionalProperties": true
-                          }
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/get-vib/manifests": {
-      "post": {
-        "summary": "Build and persist the next cumulative Get VIB allocation manifest",
-        "tags": [
-          "Admin",
-          "Get VIB"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "manifest"
-                      ],
-                      "properties": {
-                        "manifest": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/get-vib/claims": {
-      "post": {
-        "summary": "Record a Get VIB on-chain claim result",
-        "tags": [
-          "Admin",
-          "Get VIB"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "accountId",
-                  "rootVersion",
-                  "cumulativeAmount",
-                  "claimedDelta"
-                ],
-                "properties": {
-                  "accountId": {
-                    "type": "string"
-                  },
-                  "networkId": {
-                    "type": "string"
-                  },
-                  "identityId": {
-                    "type": "string"
-                  },
-                  "rootVersion": {
-                    "type": "integer"
-                  },
-                  "cumulativeAmount": {
-                    "type": "string"
-                  },
-                  "claimedDelta": {
-                    "type": "string"
-                  },
-                  "txHash": {
-                    "type": "string"
-                  },
-                  "status": {
-                    "type": "string",
-                    "enum": [
-                      "pending",
-                      "confirmed",
-                      "failed"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "claim"
-                      ],
-                      "properties": {
-                        "claim": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/conversion/dot-vib/quote": {
-      "post": {
-        "summary": "Quote DOT to VIB conversion",
-        "tags": [
-          "Conversion"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "dotAmount"
-                ],
-                "properties": {
-                  "dotAmount": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "quote"
-                      ],
-                      "properties": {
-                        "quote": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/conversion/dot-vib/orders": {
-      "post": {
-        "summary": "Create a DOT to VIB conversion order",
-        "tags": [
-          "Conversion"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "dotAmount",
-                  "viblyRootAddress"
-                ],
-                "properties": {
-                  "dotAmount": {
-                    "type": "string"
-                  },
-                  "viblyRootAddress": {
-                    "type": "string"
-                  },
-                  "evmAddress": {
-                    "type": "string"
-                  },
-                  "identityId": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "order"
-                      ],
-                      "properties": {
-                        "order": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/conversion/dot-vib/orders/{orderId}": {
-      "get": {
-        "summary": "Get DOT to VIB conversion order",
-        "tags": [
-          "Conversion"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "orderId",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "order"
-                      ],
-                      "properties": {
-                        "order": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/admin/airdrop/eligibility/{evmAddress}": {
       "put": {
         "summary": "Upsert airdrop eligibility for an EVM address",
@@ -13130,235 +12039,6 @@
                           ]
                         }
                       }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/conversion/dot-vib/config": {
-      "put": {
-        "summary": "Update DOT to VIB conversion configuration",
-        "tags": [
-          "Admin"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "totalCapVib",
-                  "initialRate",
-                  "slope",
-                  "minDot",
-                  "dotReceivingAddress"
-                ],
-                "properties": {
-                  "totalCapVib": {
-                    "type": "string"
-                  },
-                  "initialRate": {
-                    "type": "string"
-                  },
-                  "slope": {
-                    "type": "string"
-                  },
-                  "minDot": {
-                    "type": "string"
-                  },
-                  "dotReceivingAddress": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "config"
-                      ],
-                      "properties": {
-                        "config": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/conversion/dot-vib/status": {
-      "get": {
-        "summary": "Get DOT to VIB conversion operational status",
-        "tags": [
-          "Admin"
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "status"
-                      ],
-                      "properties": {
-                        "status": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
-                    },
-                    "meta": {
-                      "type": "object",
-                      "properties": {
-                        "requestId": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/admin/conversion/dot-vib/orders/{orderId}/finalize": {
-      "post": {
-        "summary": "Mark a DOT payment finalized after memo-based matching",
-        "tags": [
-          "Admin"
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "paymentId",
-                  "dotAmount",
-                  "memo"
-                ],
-                "properties": {
-                  "paymentId": {
-                    "type": "string"
-                  },
-                  "dotAmount": {
-                    "type": "string"
-                  },
-                  "memo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "name": "orderId",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Default Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "ok",
-                    "data"
-                  ],
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        true
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "order"
-                      ],
-                      "properties": {
-                        "order": {
-                          "type": "object",
-                          "additionalProperties": true
-                        }
-                      },
-                      "additionalProperties": true
                     },
                     "meta": {
                       "type": "object",

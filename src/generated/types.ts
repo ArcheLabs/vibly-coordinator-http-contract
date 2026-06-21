@@ -140,15 +140,6 @@ export interface paths {
                                     status: string;
                                     coordinatorUrls: string[];
                                     chains: {
-                                        payment: {
-                                            chainId: string;
-                                            genesisHash?: string;
-                                            rpcUrls: string[];
-                                            tokenSymbol?: string;
-                                            tokenDecimals?: number;
-                                            explorerTxUrl?: string;
-                                            status?: string;
-                                        };
                                         vibly: {
                                             chainId: string;
                                             genesisHash?: string;
@@ -164,8 +155,6 @@ export interface paths {
                                         daemon: boolean;
                                         staking: boolean;
                                         rootIdentityRegistration: boolean;
-                                        getVibConversion: boolean;
-                                        getVibClaim: boolean;
                                     };
                                     messages?: {
                                         [key: string]: string;
@@ -225,15 +214,6 @@ export interface paths {
                                     status: string;
                                     coordinatorUrls: string[];
                                     chains: {
-                                        payment: {
-                                            chainId: string;
-                                            genesisHash?: string;
-                                            rpcUrls: string[];
-                                            tokenSymbol?: string;
-                                            tokenDecimals?: number;
-                                            explorerTxUrl?: string;
-                                            status?: string;
-                                        };
                                         vibly: {
                                             chainId: string;
                                             genesisHash?: string;
@@ -249,8 +229,6 @@ export interface paths {
                                         daemon: boolean;
                                         staking: boolean;
                                         rootIdentityRegistration: boolean;
-                                        getVibConversion: boolean;
-                                        getVibClaim: boolean;
                                     };
                                     messages?: {
                                         [key: string]: string;
@@ -6036,6 +6014,122 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/nonce": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Create wallet login nonce */
+        get: {
+            parameters: {
+                query: {
+                    address: string;
+                    kind: "evm" | "substrate";
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                nonce: string;
+                                message: string;
+                                expiresAt: string;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Exchange signed login message for wallet session and Vibly identity */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": {
+                        address: string;
+                        /** @enum {string} */
+                        kind: "evm" | "substrate";
+                        walletName?: string;
+                        message: string;
+                        signature: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                sessionToken: string;
+                                identity: {
+                                    viblyAccountId: string;
+                                    evmAddress?: string;
+                                    substrateAddress?: string;
+                                    primaryAddress: string;
+                                    /** @enum {string} */
+                                    primaryKind: "evm" | "substrate";
+                                    /** @enum {string} */
+                                    role?: "user" | "agent" | "observer" | "reviewer";
+                                };
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/wallet/challenges": {
         parameters: {
             query?: never;
@@ -6263,6 +6357,72 @@ export interface paths {
                 };
             };
         };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get the current wallet-backed Vibly identity */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                session: {
+                                    token: string;
+                                    ecosystem: string;
+                                    address: string;
+                                    chainId?: string;
+                                    requestedPrincipalId?: string;
+                                    principalBindings: string[];
+                                    agentBindings: string[];
+                                    capabilityHints: string[];
+                                    createdAt?: string;
+                                    expiresAt: string;
+                                } | null;
+                                identity: {
+                                    viblyAccountId: string;
+                                    evmAddress?: string;
+                                    substrateAddress?: string;
+                                    primaryAddress: string;
+                                    /** @enum {string} */
+                                    primaryKind: "evm" | "substrate";
+                                    /** @enum {string} */
+                                    role?: "user" | "agent" | "observer" | "reviewer";
+                                } | null;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -6726,6 +6886,119 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/identity/link-evm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Link an EVM address to the current Vibly identity */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": {
+                        evmAddress: string;
+                        viblyAccountId: string;
+                        substrateAddress?: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                link: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/identity/unlink-evm": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Unlink an EVM address from the current Vibly identity */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": {
+                        evmAddress: string;
+                        viblyAccountId?: string;
+                    };
+                };
+            };
+            responses: {
+                /** @description Default Response */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @enum {boolean} */
+                            ok: true;
+                            data: {
+                                unlink: {
+                                    [key: string]: unknown;
+                                };
+                            } & {
+                                [key: string]: unknown;
+                            };
+                            meta?: {
+                                requestId?: string;
+                            };
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/identity/airdrop/payload": {
         parameters: {
             query?: never;
@@ -7058,1154 +7331,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/get-vib/config": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get production Get VIB configuration for the active network */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                config: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/quote": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Quote DOT to VIB for the active network */
-        get: {
-            parameters: {
-                query: {
-                    amount: string;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                quote: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/curve/state": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Get VIB bonding curve state */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                state: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/curve/quote": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Quote a DOT-denominated Get VIB curve purchase */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        networkId?: string;
-                        account?: string;
-                        accountId?: string;
-                        /** @enum {string} */
-                        paymentAsset?: "DOT";
-                        budgetDot?: number;
-                        dotAmount?: string;
-                        vibAmount?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                quote: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/orders": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Create a Get VIB DOT deposit order */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        dotAmount: string;
-                        accountId: string;
-                        networkId?: string;
-                        identityId?: string;
-                        evmAddress?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                order: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/orders/{orderId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get a Get VIB DOT deposit order */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    orderId: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                order: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/curve/submit-payment": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Bind a payment transaction hash to a Get VIB quote */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        quoteId: string;
-                        paymentTxHash: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                order: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/account/{accountId}/summary": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get a user's Get VIB allocation summary */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    accountId: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                summary: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/account/{accountId}/proof": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get a user's current Get VIB Merkle claim proof */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    accountId: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                proof: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/account/{accountId}/records": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get a user's Get VIB deposits, allocations, and claims */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    accountId: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                records: {
-                                    relayDeposits: ({
-                                        sourceId?: string;
-                                        from?: string;
-                                        to?: string;
-                                        dotAmount?: string;
-                                        paymentAmount?: string;
-                                        extrinsicHash?: string;
-                                        blockNumber?: number;
-                                        finalizedAt?: string;
-                                        status?: string;
-                                        failureReason?: string;
-                                        accountId?: string;
-                                    } & {
-                                        [key: string]: unknown;
-                                    })[];
-                                    deposits: {
-                                        [key: string]: unknown;
-                                    }[];
-                                    allocations: {
-                                        [key: string]: unknown;
-                                    }[];
-                                    claims: {
-                                        [key: string]: unknown;
-                                    }[];
-                                } & {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/claim-for": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Sponsor a Get VIB claim with the configured claim-root publisher relayer */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        networkId?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                result: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/get-vib/curve": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Get VIB bonding curve display points */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                curve: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/get-vib/deposits/finalize": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Finalize an observed Relay Chain DOT deposit and create allocation */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        sourceId?: string;
-                        networkId?: string;
-                        dotAmount?: string;
-                        orderId?: string;
-                        observedDepositId?: string;
-                        accountId?: string;
-                        identityId?: string;
-                        paymentId?: string;
-                        finalizedAt?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                result: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/get-vib/relay-watcher/status": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Get VIB relay deposit watcher status */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                status: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/get-vib/root-uploader/status": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Get VIB root uploader status */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                status: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/get-vib/relay-deposits": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** List observed Get VIB Relay Chain deposits */
-        get: {
-            parameters: {
-                query?: {
-                    status?: "observed" | "confirmed" | "failed";
-                    limit?: number;
-                };
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                deposits: {
-                                    [key: string]: unknown;
-                                }[];
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/get-vib/manifests": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Build and persist the next cumulative Get VIB allocation manifest */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                manifest: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/get-vib/claims": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Record a Get VIB on-chain claim result */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        accountId: string;
-                        networkId?: string;
-                        identityId?: string;
-                        rootVersion: number;
-                        cumulativeAmount: string;
-                        claimedDelta: string;
-                        txHash?: string;
-                        /** @enum {string} */
-                        status?: "pending" | "confirmed" | "failed";
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                claim: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/conversion/dot-vib/quote": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Quote DOT to VIB conversion */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        dotAmount: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                quote: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/conversion/dot-vib/orders": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Create a DOT to VIB conversion order */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        dotAmount: string;
-                        viblyRootAddress: string;
-                        evmAddress?: string;
-                        identityId?: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                order: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/conversion/dot-vib/orders/{orderId}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get DOT to VIB conversion order */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    orderId: string;
-                };
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                order: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/admin/airdrop/eligibility/{evmAddress}": {
         parameters: {
             query?: never;
@@ -8309,173 +7434,6 @@ export interface paths {
         };
         put?: never;
         post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/conversion/dot-vib/config": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        /** Update DOT to VIB conversion configuration */
-        put: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        totalCapVib: string;
-                        initialRate: string;
-                        slope: string;
-                        minDot: string;
-                        dotReceivingAddress: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                config: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/conversion/dot-vib/status": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get DOT to VIB conversion operational status */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                status: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/admin/conversion/dot-vib/orders/{orderId}/finalize": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Mark a DOT payment finalized after memo-based matching */
-        post: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path: {
-                    orderId: string;
-                };
-                cookie?: never;
-            };
-            requestBody: {
-                content: {
-                    "application/json": {
-                        paymentId: string;
-                        dotAmount: string;
-                        memo: string;
-                    };
-                };
-            };
-            responses: {
-                /** @description Default Response */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            /** @enum {boolean} */
-                            ok: true;
-                            data: {
-                                order: {
-                                    [key: string]: unknown;
-                                };
-                            } & {
-                                [key: string]: unknown;
-                            };
-                            meta?: {
-                                requestId?: string;
-                            };
-                        };
-                    };
-                };
-            };
-        };
         delete?: never;
         options?: never;
         head?: never;
